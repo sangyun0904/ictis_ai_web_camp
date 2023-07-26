@@ -14,15 +14,15 @@ for (var i = 0; i < size; i++) {
 }
 
 var isBlack = 1;
-Omok()
+Omok();
 
 function Omok() {
 
     readline.question("next move? ", a => {
         var x = a.substring(1, a.indexOf(","));
-        x = parseInt(x);
+        x = parseInt(x) - 1;
         var y = a.substring(a.indexOf(",") + 1, a.length - 1);
-        y = parseInt(y);
+        y = parseInt(y) - 1;
 
         if (isBlack === 1) { // Black 순서일 때
             board[x][y] = 1;
@@ -49,9 +49,11 @@ function Omok() {
         }
         const isGameOver = gameOver(board, size)
         if (isGameOver === "Not Over!") {
-            return Omok();
+            Omok();
         } else {
-            return isGameOver;
+            console.log(isGameOver)
+            readline.close();
+            return;
         }
     });
 }
