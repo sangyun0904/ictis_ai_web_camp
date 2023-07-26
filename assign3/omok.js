@@ -14,19 +14,36 @@ for (var i = 0; i < size; i++) {
 }
 while (true) {
 
-    var answer = "";
-    readline.question("next move?", a => {
-        answer += a;
+    var isBlack = 1;
+
+    readline.question("next move? ", a => {
+        var x = a.substring(1, a.indexOf(","));
+        x = parseInt(x);
+        var y = a.substring(a.indexOf(",") + 1, a.length - 1);
+        y = parseInt(y);
+
+        if (isBlack === 1) { // Black 순서일 때
+            board[x][y] = 1;
+        } else {
+            board[x][y] = 0;
+        }
+
+        isBlack = isBlack * (-1);
+
+        // console.log(x + " + " + y + " = " + (x+y));
+
         for (var i = 0; i < size; i++) {
             var line = "|";
             for (var j = 0; j < size; j++) {
                 if (board[i][j] === -1) {
                     line += " |";
+                } else if (board[i][j] === 1) {
+                    line += "B|";
                 } else {
-                    line += board[i][j] + "|";
+                    line += "W|";
                 }
             }
-            // console.log(line);
+            console.log(line);
         }
         readline.close();
     });
