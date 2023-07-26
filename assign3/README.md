@@ -1,1 +1,3 @@
-<img width="523" alt="image" src="https://github.com/sangyun0904/ictis_ai_web_camp/assets/69445075/b3e393d2-3f71-4796-a7a4-eed92b51052e">
+오목 30 X 30
+
+<img width="558" alt="image" src="https://github.com/sangyun0904/ictis_ai_web_camp/assets/69445075/7f8cafeb-c8d1-402c-8ce2-5a6ea31aada4">
