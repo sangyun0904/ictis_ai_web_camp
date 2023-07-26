@@ -12,9 +12,11 @@ for (var i = 0; i < size; i++) {
     }
     board[i] = row;
 }
-while (true) {
 
-    var isBlack = 1;
+var isBlack = 1;
+Omok()
+
+function Omok() {
 
     readline.question("next move? ", a => {
         var x = a.substring(1, a.indexOf(","));
@@ -45,7 +47,37 @@ while (true) {
             }
             console.log(line);
         }
-        readline.close();
+        const isGameOver = gameOver(board, size)
+        if (isGameOver === "Not Over!") {
+            return Omok();
+        } else {
+            return isGameOver;
+        }
     });
-    break;
+}
+
+function gameOver(board, size) {
+    for (var i = 0; i < size-5; i++) {
+        for (var j = 0; j < size-5; j++) {
+            if (board[i][j] === 1 && board[i+1][j] === 1 && board[i+2][j] === 1 && board[i+3][j] === 1 && board[i+4][j] === 1) {
+                return "Black Win!"
+            }
+            if (board[i][j] === 0 && board[i+1][j] === 0 && board[i+2][j] === 0 && board[i+3][j] === 0 && board[i+4][j] === 0) {
+                return "White Win!"
+            }
+            if (board[i][j] === 1 && board[i][j+1] === 1 && board[i][j+2] === 1 && board[i][j+3] === 1 && board[i][j+4] === 1) {
+                return "Black Win!"
+            }
+            if (board[i][j] === 0 && board[i][j+1] === 0 && board[i][j+2] === 0 && board[i][j+3] === 0 && board[i][j+4] === 0) {
+                return "White Win!"
+            }
+            if (board[i][j] === 1 && board[i+1][j+1] === 1 && board[i+2][j+2] === 1 && board[i+3][j+3] === 1 && board[i+4][j+4] === 1) {
+                return "Black Win!"
+            }
+            if (board[i][j] === 0 && board[i+1][j+1] === 0 && board[i+2][j+2] === 0 && board[i+3][j+3] === 0 && board[i+4][j+4] === 0) {
+                return "White Win!"
+            }
+        }
+    }
+    return "Not Over!"
 }
